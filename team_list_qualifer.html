@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Round 1: Qualifiers</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f9f9f9;
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .navbar a:hover {
+        background-color: #ff9d23;
+        color: white;
+      }
+
+      .team_list {
+        padding: 80px 2px 15px 5px;
+        text-align: center;
+        background-color: #ffd65a;
+        border-radius: 30px;
+      }
+      .matchup-container {
+        align-items: center;
+      }
+      .team {
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #16c47f;
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin: 20px 15px;
+      }
+      .team img {
+        width: 100%;
+        height: 230px;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        border: 3px solid #ffd65a;
+      }
+      .team h2 {
+        font-size: 25px;
+        font-weight: 600;
+      }
+      .team ul {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+      }
+      .team ul li {
+        list-style: none;
+        font-size: 18px;
+        background-color: #ff9d23;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 10px;
+      }
+      .team-count {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 22px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="round_1.html">Round 1</a></li>
+        <li><a href="round_2.html">Round 2</a></li>
+        <li><a href="round_3.html">Round 3</a></li>
+      </ul>
+    </nav>
+
+    <div class="team_list">
+      <h1>Registered Team List</h1>
+    </div>
+    <div class="matchup-container" id="teamList"></div>
+
+    <div class="team-count" id="teamCount">Total Teams: 0</div>
+
+    <script>
+      const teams = [
+        {
+          name: "Squad 1",
+          image: "../images/hq720 (1).jpg",
+          players: ["Dhanush", "Logith", "Nitish", "Saran"],
+        },
+        {
+          name: "Squad 2",
+          image: "../images/hq720.jpg",
+          players: ["Saran", "Hari", "Dharun", "Saran"],
+        },
+        {
+          name: "Squad 3",
+          image: "../images/hq720.jpg",
+          players: ["Saran", "Hari", "Dharun", "Saran"],
+        },
+        {
+          name: "Squad 4",
+          image: "../images/hq720.jpg",
+          players: ["Saran", "Hari", "Dharun", "Saran"],
+        },
+      ];
+
+      const teamListContainer = document.getElementById("teamList");
+      const teamCount = document.getElementById("teamCount");
+
+      teams.map((team) => {
+        const teamDiv = document.createElement("div");
+        teamDiv.classList.add("team");
+
+        teamDiv.innerHTML = `
+                <img src="${team.image}" alt="${team.name}" />
+                <h2>${team.name}</h2>
+                <ul id="${team.name}" class="dropdown">
+                    ${team.players
+                      .map((player) => `<li>${player}</li>`)
+                      .join("")}
+                </ul>
+            `;
+
+        teamListContainer.appendChild(teamDiv);
+      });
+
+      teamCount.innerText = `Total Teams: ${teams.length}`;
+    </script>
+  </body>
+</html>
